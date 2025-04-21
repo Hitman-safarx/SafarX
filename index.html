@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFARX - Your Ultimate Travel Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: #003580;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffc107;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        .user-actions a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .user-actions a i {
+            margin-right: 5px;
+        }
+        
+        .user-actions a:hover {
+            text-decoration: underline;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        nav a i {
+            margin-right: 8px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ffc107;
+            color: #003580;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e6af00;
+            transform: translateY(-2px);
+        }
+        
+        .search-container {
+            background-color: #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-tab {
+            padding: 10px 20px;
+            background-color: #e6af00;
+            margin-right: 10px;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .search-tab.active {
+            background-color: white;
+            color: #003580;
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input, .form-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .search-btn {
+            background-color: #003580;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            align-self: flex-end;
+            transition: all 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: #002366;
+        }
+        
+        .offers-section {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: #ffc107;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .offer-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .offer-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .offer-details {
+            padding: 20px;
+        }
+        
+        .offer-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #003580;
+        }
+        
+        .offer-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .offer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .offer-price {
+            font-weight: bold;
+            color: #ff5722;
+            font-size: 18px;
+        }
+        
+        .offer-rating {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        
+        .testimonials {
+            background-color: #003580;
+            padding: 60px 0;
+            color: white;
+            margin: 60px 0;
+        }
+        
+        .testimonials .section-title {
+            color: white;
+        }
+        
+        .testimonials .section-title:after {
+            background-color: #ffc107;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            background-size: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .newsletter {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: #003580;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: #002366;
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ffc107;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffc107;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #ffc107;
+            color: #003580;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #ddd;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .user-actions {
+                margin-top: 15px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-container {
+                margin-top: 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-plane"></i>
+                    SAFAR<span>X</span>
+                </div>
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-user"></i> Login</a>
+                    <a href="#"><i class="fas fa-user-plus"></i> Sign Up</a>
+                    <a href="#"><i class="fas fa-headset"></i> Support</a>
+                </div>
+            </div>
+            <nav>
+                <a href="#"><i class="fas fa-plane"></i> Flights</a>
+                <a href="#"><i class="fas fa-hotel"></i> Hotels</a>
+                <a href="#"><i class="fas fa-home"></i> Homestays</a>
+                <a href="#"><i class="fas fa-umbrella-beach"></i> Holidays</a>
+                <a href="#"><i class="fas fa-train"></i> Trains</a>
+                <a href="#"><i class="fas fa-bus"></i> Buses</a>
+                <a href="#"><i class="fas fa-car"></i> Cabs</a>
+                <a href="#"><i class="fas fa-ticket-alt"></i> Activities</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Book unforgettable experiences at prices you won't find anywhere else</p>
+            <a href="#" class="btn">Explore Deals</a>
+        </div>
+    </section>
+    
+    <main class="container">
+        <div class="search-container">
+            <div class="search-tabs">
+                <div class="search-tab active"><i class="fas fa-plane"></i> Flights</div>
+                <div class="search-tab"><i class="fas fa-hotel"></i> Hotels</div>
+                <div class="search-tab"><i class="fas fa-umbrella-beach"></i> Holidays</div>
+            </div>
+            <form class="search-form">
+                <div class="form-group">
+                    <label for="from">From</label>
+                    <input type="text" id="from" placeholder="City or Airport">
+                </div>
+                <div class="form-group">
+                    <label for="to">To</label>
+                    <input type="text" id="to" placeholder="City or Airport">
+                </div>
+                <div class="form-group">
+                    <label for="departure">Departure</label>
+                    <input type="date" id="departure">
+                </div>
+                <div class="form-group">
+                    <label for="return">Return</label>
+                    <input type="date" id="return">
+                </div>
+                <div class="form-group">
+                    <label for="travelers">Travelers</label>
+                    <select id="travelers">
+                        <option>1 Adult</option>
+                        <option>2 Adults</option>
+                        <option>Family</option>
+                        <option>Group</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">Search <i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        
+        <section class="offers-section">
+            <h2 class="section-title">Special Offers</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-badge">25% OFF</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1518544866330-95a2bfb099f2?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Summer Getaway to Bali</h3>
+                        <p class="offer-desc">Enjoy 7 days in paradise with flights and 5-star hotel included. Includes daily breakfast, airport transfers, and two spa treatments.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹45,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Weekend Deal</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Weekend in Goa</h3>
+                        <p class="offer-desc">2 nights in a beachfront resort with breakfast. Free cancellation up to 7 days before arrival.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹8,499</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Early Bird</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">European Adventure</h3>
+                        <p class="offer-desc">10-day tour across 4 countries with guided tours. Visit Paris, Rome, Barcelona and Amsterdam with expert guides.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹1,25,000</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Adventure</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1580655653888-5a85a6ad9660?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Himalayan Trek</h3>
+                        <p class="offer-desc">5-day guided trek with all meals and equipment included. Suitable for beginners with certified mountain guides.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹12,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="offers-section">
+            <h2 class="section-title">Trending Destinations</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Dubai</h3>
+                        <p class="offer-desc">Experience luxury in the city of gold with breathtaking skyscrapers and desert adventures.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">Flights from ₹18,499</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1573843981267-be1999ff37cd?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Maldives</h3>
+                        <p class="offer-desc">Overwater bungalows and crystal clear waters perfect for honeymooners and divers.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">Packages from ₹49,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Kerala</h3>
+                        <p class="offer-desc">Backwaters, beaches, and lush greenery in God's Own Country.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">Packages from ₹9,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1565967511849-76a60a516170?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Singapore</h3>
+                        <p class="offer-desc">A perfect blend of culture and modernity with world-class attractions.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">Flights from ₹15,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Travelers Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"SAFARX made our honeymoon unforgettable! The Bali package was perfectly arranged and we got great value for money. Will definitely book with them again!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/women/32.jpg');"></div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Honeymoon Traveler</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The European tour was well-organized with excellent hotels and knowledgeable guides. SAFARX took care of everything so we could just enjoy our vacation."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/men/45.jpg');"></div>
+                            <div class="author-info">
+                                <h4>Rahul Mehta</h4>
+                                <p>Family Vacation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I've used many travel sites but SAFARX stands out for their customer service. When our flight was delayed, their support team rebooked us within minutes!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
+                            <div class="author-info">
+                                <h4>Ananya Patel</h4>
+                                <p>Frequent Traveler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="offers-section">
+            <h2 class="section-title">Last Minute Deals</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-badge">Limited Time</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Bangkok Weekend</h3>
+                        <p class="offer-desc">3 nights with flights included. Departure this Friday!</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹22,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Flash Sale</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Andaman Escape</h3>
+                        <p class="offer-desc">4 nights beach resort with snorkeling trip. Book today only!</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹18,499</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Weekend Getaway</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Munnar Hills</h3>
+                        <p class="offer-desc">2 nights in tea estate resort with nature walks.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹6,999</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Family Offer</div>
+                    <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3');"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Ooty Family Package</h3>
+                        <p class="offer-desc">3 nights with activities for kids. Special rates for children.</p>
+                        <div class="offer-meta">
+                            <div class="offer-price">From ₹12,499</div>
+                            <div class="offer-rating"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Get the Best Travel Deals</h2>
+            <p>Subscribe to our newsletter and receive exclusive offers directly to your inbox</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SAFARX</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-bullhorn"></i> Careers</a></li>
+                        <li><a href="#"><i class="fas fa-newspaper"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-building"></i> Corporate Travel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Customer Support</a></li>
+                        <li><a href="#"><i class="fas fa-undo"></i> Cancellation Policy</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-plane"></i> Flights</a></li>
+                        <li><a href="#"><i class="fas fa-hotel"></i> Hotels</a></li>
+                        <li><a href="#"><i class="fas fa-gift"></i> Holiday Packages</a></li>
+                        <li><a href="#"><i class="fas fa-umbrella"></i> Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-phone"></i> +91 9876543210</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> help@safarx.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Travel Plaza, Mumbai</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2023 SAFARX Travel Solutions Pvt. Ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.search-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // In a real implementation, you would switch the search form here
+                // based on which tab is active (flights, hotels, holidays)
+            });
+        });
+        
+        // Set minimum date for departure to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('departure').min = today;
+        
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            if(email) {
+                alert(`Thank you for subscribing with ${email}! You'll receive our best deals soon.`);
+                newsletterForm.querySelector('input').value = '';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFARX - Travel Support</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Support Widget Styles */
+        .support-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .support-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .support-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .support-btn.whatsapp {
+            background: #25D366;
+        }
+        
+        .support-btn.phone {
+            background: #003580;
+        }
+        
+        .support-btn.chat {
+            background: #ffc107;
+            color: #003580;
+        }
+        
+        .support-tooltip {
+            position: absolute;
+            right: 60px;
+            white-space: nowrap;
+            background: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .support-btn:hover .support-tooltip {
+            opacity: 1;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .support-container {
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your website content here -->
+
+    <!-- Support Widget Container -->
+    <div class="support-container">
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919987646789?text=Hi%20SAFARX,%20I%20need%20help%20with..." 
+           class="support-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="support-tooltip">Chat via WhatsApp</span>
+        </a>
+        
+        <!-- Phone Button -->
+        <a href="tel:+919987646789" 
+           class="support-btn phone">
+            <i class="fas fa-phone-alt"></i>
+            <span class="support-tooltip">Call +91 98765 43210</span>
+        </a>
+        
+        <!-- Live Chat Button -->
+        <div class="support-btn chat" id="liveChatBtn">
+            <i class="fas fa-comment-dots"></i>
+            <span class="support-tooltip">Live Chat Support</span>
+        </div>
+    </div>
+
+    <!-- Tawk.to Live Chat Code -->
+    <script>
+        // Tawk.to Live Chat
+        document.getElementById('liveChatBtn').addEventListener('click', function() {
+            if (typeof Tawk_API !== 'undefined') {
+                Tawk_API.maximize();
+            } else {
+                // Initialize Tawk.to if not loaded
+                var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+                (function() {
+                    var s1 = document.createElement("script"),
+                        s0 = document.getElementsByTagName("script")[0];
+                    s1.async = true;
+                    s1.src = 'https://embed.tawk.to/YOUR_TAWKTO_WIDGET_ID/default';
+                    s1.charset = 'UTF-8';
+                    s1.setAttribute('crossorigin', '*');
+                    s0.parentNode.insertBefore(s1, s0);
+                })();
+            }
+        });
+
+        // Call Tracking (Optional) - Using CallHippo example
+        function trackCall() {
+            // Replace with your call tracking code
+            console.log("Call initiated - would trigger tracking here");
+        }
+        
+        document.querySelector('.phone').addEventListener('click', trackCall);
+    </script>
+
+    <!-- CallHippo Tracking (Optional) -->
+    <!-- <script src="https://callhippo.com/your-tracking-code.js"></script> -->
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFARX - Call Tracking</title>
+    <style>
+        /* Call Tracking Button Styles */
+        .callhippo-btn {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            background: #003580;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .callhippo-btn i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .callhippo-btn:hover {
+            background: #002366;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .callhippo-btn {
+                left: 10px;
+                bottom: 10px;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for phone icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Your website content here -->
+
+    <!-- CallHippo Call Tracking Button -->
+    <a href="#" id="callhippoButton" class="callhippo-btn">
+        <i class="fas fa-phone-alt"></i>
+        Call +91 99 67 123 456
+    </a>
+
+    <!-- CallHippo Integration Code -->
+    <script>
+        // Configuration (Replace with your CallHippo details)
+        const callHippoConfig = {
+            widgetId: 'YOUR_WIDGET_ID', // From CallHippo dashboard
+            phoneNumber: '+919987646789', // Your virtual number
+            displayNumber: '+91 9967123456', // Formatted display number
+            trackingSource: 'SAFARX Website',
+            callRecording: true,
+            analytics: true
+        };
+
+        // Initialize CallHippo
+        function initCallHippo() {
+            // Create script element
+            const script = document.createElement('script');
+            script.src = `https://callhippo.com/widget/v2/${callHippoConfig.widgetId}`;
+            script.async = true;
+            
+            // Set data attributes
+            script.dataset.phoneNumber = callHippoConfig.phoneNumber;
+            script.dataset.trackingSource = callHippoConfig.trackingSource;
+            script.dataset.callRecording = callHippoConfig.callRecording;
+            script.dataset.analytics = callHippoConfig.analytics;
+            
+            document.body.appendChild(script);
+            
+            // Update button display
+            document.getElementById('callhippoButton').textContent = `Call ${callHippoConfig.displayNumber}`;
+        }
+
+        // Load CallHippo when button is clicked (for better page load performance)
+        document.getElementById('callhippoButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (!window.CallHippo) {
+                initCallHippo();
+                
+                // Small delay to ensure script loads
+                setTimeout(() => {
+                    window.CallHippo.initiateCall();
+                }, 300);
+            } else {
+                window.CallHippo.initiateCall();
+            }
+            
+            // Track click event (optional)
+            if (window.ga) {
+                ga('send', 'event', 'Phone', 'click', 'SAFARX Call Button');
+            }
+        });
+
+        // Alternative: Load on page load (if you want immediate availability)
+        // window.addEventListener('DOMContentLoaded', initCallHippo);
+    </script>
+
+    <!-- Google Analytics Event Tracking (Optional) -->
+    <script>
+        // Example of how you might track calls
+        function trackCallEvent() {
+            if (window.ga) {
+                ga('send', 'event', {
+                    eventCategory: 'Phone',
+                    eventAction: 'call',
+                    eventLabel: 'SAFARX Call Button'
+                });
+            }
+            console.log('Call tracked for analytics');
+        }
+    </script>
+</body>
+</html>
+_redirects
+/* /index.html 200
